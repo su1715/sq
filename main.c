@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 				ft_error();
 			ft_read_file(fd, map);
 			close(fd);
-			//dynamic programming
+			dynamic_programming(map);
 			//print
 		}
 	}
@@ -59,6 +59,8 @@ int	ft_get_first_line(int fd, map_info *map)
 	return (1);
 }
 
+int 
+
 int	ft_read_file(int fd, map_info *map)
 {
 	int	i;
@@ -80,15 +82,4 @@ int	ft_read_file(int fd, map_info *map)
 void	ft_error()
 {
 	write(STDERR_FILENO, "map error\n", 10);
-}
-
-int is_overlap(char empty, char obs, char fill)
-{
-	if (empty == obs)
-		return (1);
-	if (empty == fill)
-		return (1);
-	if (obs == fill)
-		return (1);
-	return (0);
 }
