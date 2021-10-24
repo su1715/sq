@@ -58,22 +58,23 @@ void	find_square(t_map *map, int ***memo)
 	}
 }
 
-void	update_by_memo(t_map *map, int ***memo)
+void	update_by_memo(t_map *map, int ***memo_m)
 {
 	int	i;
 	int	j;
 	int x;
 	int y;
+	int **memo = *memo_m;
 
-	i = 1;
-	j = 1;
+	i = 0;
 	y = map->sq_y;
 	x = map->sq_x;
 	while (i < map->sq_size)
 	{
+		j = 0;
 		while (j < map->sq_size)
 		{
-			(*memo)[y - i][x - j] = map->fill;
+			map->grid[y - i][x - j] = map->fill;
 			j++;
 		}
 		i++;
@@ -86,10 +87,10 @@ int	allocate_memo(t_map *map, int ***memo)
 	int	j;
 
 	i = 0;
-	j = 0;
 	*memo = (int **)malloc(map->row * sizeof(int *));
 	while (i < map->row)
 	{
+		j = 0;
 		(*memo)[i] = (int *)malloc(map->col * sizeof(int));
 		while (j < map->col)
 		{
