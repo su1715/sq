@@ -27,6 +27,7 @@ int	dynamic_programming(t_map *map)
 	find_square(map, &memo);
 	update_by_memo(map, &memo);
 	free_memo(map, &memo);
+	print_map(map);
 	return (1);
 }
 
@@ -40,10 +41,10 @@ void	find_square(t_map *map, int ***memo)
 	i = 0;
 	map->sq_size = 0;
 	grid = *memo;
-	while (i < map->col)
+	while (i < map->row)
 	{
 		j = 0;
-		while (j < map->row)
+		while (j < map->col)
 		{
 			if (map->sq_size < grid[i][j])
 			{

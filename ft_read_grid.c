@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "bsq_lib.h"
-
 int	ft_read_grid(int fd, t_map *map)
 {
 	int		i;
@@ -26,8 +25,6 @@ int	ft_read_grid(int fd, t_map *map)
 		while (cnt < map->col)
 		{
 			read(fd, &c, 1);
-			if (c == '\n')
-				return (0);
 			if (c != map->empty && c != map->obstacle)
 				return (0);
 			map->grid[i][cnt] = c;

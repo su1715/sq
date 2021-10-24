@@ -25,8 +25,8 @@ typedef struct s_map {
 	char	empty;
 	char	obstacle;
 	char	fill;
-	int		sq_x;
 	int		sq_y;
+	int		sq_x;
 	int		sq_size;
 }	t_map;
 
@@ -36,5 +36,5 @@ int		dynamic_programming(t_map *map);
 int		ft_read_first_line(int fd, t_map *map);
 int		ft_read_first_row(int fd, t_map *map);
 int		ft_read_grid(int fd, t_map *map);
-
+void	print_map(t_map *map);
 #endif

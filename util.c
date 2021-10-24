@@ -50,21 +50,26 @@ int is_overlap(char empty, char obs, char fill)
 		return (1);
 	return (0);
 }
-
+#include <stdio.h>
 int ft_atoi(char *str)
 {
 	int	result;
+	int i;
 
+
+	i = 0;
 	result = 0;
-	while (*str)
+	while (str[i] != '\0')
 	{
-		result = result * 10 + (*str);
-		str++;
+		result = result * 10 + (str[i] - '0');
+		i++;
 	}
 	return (result);
 }
 
-void	ft_error(void)
+void	ft_error(char c)
 {
+	write(1, &c, 1);
+	write(1, "\n", 1);
 	write(2, "map error\n", 10);
 }

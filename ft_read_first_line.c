@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "bsq_lib.h"
-
 int	ft_read_first_line(int fd, t_map *map)
 {
 	char	buf[14];

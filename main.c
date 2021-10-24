@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		if (!input(0, map))
-			ft_error();
+			ft_error('0');
 		else
 			dynamic_programming(map);
 	}
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			if (!input(argv[i], map))
-				ft_error();
+				ft_error('1');
 			else
 				dynamic_programming(map);
 			if (i < argc - 1)

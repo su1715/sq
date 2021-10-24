@@ -22,7 +22,6 @@ int	input(char *filename, t_map *map)
 		fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	close(fd);
 	if (!ft_read_first_line(fd, map))
 		return (0);
 	map->grid = (unsigned char **) malloc(sizeof(unsigned char *) * map->row);
@@ -30,5 +29,6 @@ int	input(char *filename, t_map *map)
 		return (0);
 	if (!ft_read_grid(fd, map))
 		return (0);
+	close(fd);
 	return (1);
 }

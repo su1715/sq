@@ -18,8 +18,8 @@ int	ft_read_first_row(int fd, t_map *map)
 	char	c;
 
 	i = 0;
-	map->grid[0] = (unsigned char *) malloc(sizeof(unsigned char) * 16);
-	map->col = 16;
+	map->grid[0] = (unsigned char *) malloc(sizeof(unsigned char) * 27);
+	map->col = 27;
 	while (1)
 	{
 		read(fd, &c, 1);
