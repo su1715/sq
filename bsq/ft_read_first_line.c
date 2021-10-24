@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_read_first_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 20:17:55 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 14:36:29 by dha              ###   ########.fr       */
+/*   Created: 2021/10/24 10:40:35 by dha               #+#    #+#             */
+/*   Updated: 2021/10/24 14:37:08 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq_lib.h"
 
-int	main(int argc, char **argv)
+int	ft_read_first_line(int fd, t_map *map)
 {
+	char	buf[14];
 	int		i;
-	t_map	*map;
 
-	i = 1;
-	map = (t_map *) malloc(sizeof(t_map));
-	if (argc == 1)
+	i = 0;
+	while (1) // 13번 인덱스까지만 확인(?)
 	{
-		if (!input(0, map))
-			ft_error();
-		else
-			dynamic_programming(map);
-	}
-	else
-	{
-		while (i < argc)
+		if (i > 13)
+			return (0);
+		read(fd, buf + i, 1);
+		if (buf[i] == '\n')
 		{
-			if (!input(argv[i], map))
-				ft_error();
-			else
-				dynamic_programming(map);
-			if (i < argc - 1)
-				write(1, "\n", 1);
-			i++;
+			map->empty = buf[i - 3];
+			map->obstacle = buf[i - 2];
+			map->fill = buf[i - 1];
+			if (is_overlap(map->empty, map->obstacle, map->fill))
+				return (0);
+			buf[i - 3] = '\0';
+			map->row = ft_atoi(buf);
+			break ;
 		}
+		i++;
 	}
+	return (1);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_first_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dha <dha@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:40:35 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 13:23:41 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 14:37:08 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "bsq_lib.h"
 
-int	read_first_line(int fd, t_map *map)
+int	ft_read_first_line(int fd, t_map *map)
 {
 	char	buf[14];
 	int		i;
@@ -22,7 +22,7 @@ int	read_first_line(int fd, t_map *map)
 	{
 		if (i > 13)
 			return (0);
-		read(fd, buf[i], 1);
+		read(fd, buf + i, 1);
 		if (buf[i] == '\n')
 		{
 			map->empty = buf[i - 3];

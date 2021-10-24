@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 20:17:55 by dha               #+#    #+#             */
+/*   Created: 2021/10/22 23:06:13 by dha               #+#    #+#             */
 /*   Updated: 2021/10/24 14:36:29 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq_lib.h"
 
-int	main(int argc, char **argv)
+int	input(char *filename, t_map *map)
 {
-	int		i;
-	t_map	*map;
+	int		fd;
 
-	i = 1;
-	map = (t_map *) malloc(sizeof(t_map));
-	if (argc == 1)
-	{
-		if (!input(0, map))
-			ft_error();
-		else
-			dynamic_programming(map);
-	}
+	if (filename == 0)
+		fd = 0;
 	else
-	{
-		while (i < argc)
-		{
-			if (!input(argv[i], map))
-				ft_error();
-			else
-				dynamic_programming(map);
-			if (i < argc - 1)
-				write(1, "\n", 1);
-			i++;
-		}
-	}
+		fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	close(fd);
+	if (!ft_read_first_line(fd, map))
+		return (0);
+	map->grid = (unsigned char **) malloc(sizeof(unsigned char *) * map->row);
+	if (!ft_read_first_row(fd, map))
+		return (0);
+	if (!ft_read_grid(fd, map))
+		return (0);
+	return (1);
 }

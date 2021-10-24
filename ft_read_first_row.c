@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_first_row.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dha <dha@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:56:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 13:36:36 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 14:32:55 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "bsq_lib.h"
 
 int	ft_read_first_row(int fd, t_map *map)
 {
@@ -18,7 +18,7 @@ int	ft_read_first_row(int fd, t_map *map)
 	char	c;
 
 	i = 0;
-	map->grid[0] = (char *) malloc(sizeof(char) * 16);
+	map->grid[0] = (unsigned char *) malloc(sizeof(unsigned char) * 16);
 	map->col = 16;
 	while (1)
 	{
@@ -27,7 +27,7 @@ int	ft_read_first_row(int fd, t_map *map)
 			break ;
 		if (c != map->empty && c != map->obstacle) // C가 NULL 또는 non printable 이면?
 			return (0);
-		grid[0][i] = c;
+		map->grid[0][i] = c;
 		i++;
 		if (i == map->col)
 		{

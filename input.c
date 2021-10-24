@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dha <dha@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:06:13 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 13:35:13 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 14:36:29 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "bsq_lib.h"
 
 int	input(char *filename, t_map *map)
 {
@@ -25,9 +25,10 @@ int	input(char *filename, t_map *map)
 	close(fd);
 	if (!ft_read_first_line(fd, map))
 		return (0);
-	map->grid = (char **) malloc(sizeof(char *) * map->row);
+	map->grid = (unsigned char **) malloc(sizeof(unsigned char *) * map->row);
 	if (!ft_read_first_row(fd, map))
 		return (0);
 	if (!ft_read_grid(fd, map))
 		return (0);
+	return (1);
 }
