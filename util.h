@@ -17,6 +17,6 @@ int		ft_min(int left, int up, int left_up);
 int		ft_atoi(char *str);
 int		is_overlap(char empty, char obs, char fill);
 char	*ft_strcpy(char *dest, char *src);
-void	ft_error(char c);
+void	ft_error();
 
 #endif

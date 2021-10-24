@@ -67,9 +67,7 @@ int ft_atoi(char *str)
 	return (result);
 }
 
-void	ft_error(char c)
+void	ft_error()
 {
-	write(1, &c, 1);
-	write(1, "\n", 1);
 	write(2, "map error\n", 10);
 }
