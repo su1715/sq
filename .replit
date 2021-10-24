@@ -1,2 +1,2 @@
 language = "c"
-run = "gcc *.c *.h; ./a.out ex2"
+run = "gcc *.c *.h; ./a.out ex3"

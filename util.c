@@ -51,7 +51,11 @@ int	is_overlap(char empty, char obs, char fill)
 	return (0);
 }
 
+<<<<<<< HEAD
 int	ft_atoi(char *str)
+=======
+int ft_atoi(char *str)
+>>>>>>> refs/remotes/origin/master
 {
 	int	result;
 	int	i;
