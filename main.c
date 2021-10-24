@@ -1,18 +1,20 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include "map_admin.h"
 
 void	ft_error();
-int	ft_read_file(int fd, map_info *map);
+int	ft_read_file(int fd, t_map *map);
+int ft_atoi(char *str);
 
 int	main(int argc, char *argv[])
 {
 	int			i;
 	int 		fd;
-	map_info	*map;
+	t_map	*map;
 
 	i = 1;
-	map = (map_info	*)malloc(sizeof(map_info));
+	map = (t_map	*)malloc(sizeof(t_map));
 	if (argc == 1)
 	{
 		//read by STDIN_FILENO
@@ -22,8 +24,15 @@ int	main(int argc, char *argv[])
 		while (i < argc)
 		{
 			if ( 0 > (fd = open(argv[i++], O_RDONLY)))
+			{
 				ft_error();
-			ft_read_file(fd, map);
+				continue;
+			}
+			if (ft_read_file(fd, map))
+			{
+				ft_error();
+				continue;
+			}
 			close(fd);
 			dynamic_programming(map);
 			//print
@@ -34,7 +43,7 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-int	ft_get_first_line(int fd, map_info *map)
+int	ft_read_first_line(int fd, t_map *map)
 {
 	char	buf[14]; //line 10 (int) + char 3 + \n;
 	int		i;
@@ -42,7 +51,9 @@ int	ft_get_first_line(int fd, map_info *map)
 	i = 0;
 	while (1)
 	{
-		read(fd, buf[i], 1);
+		if (i > 13)
+			return (0);
+		read(fd, &buf[i], 1);
 		if (buf[i] == '\n')
 		{
 			map->empty = buf[i - 3];
@@ -59,21 +70,72 @@ int	ft_get_first_line(int fd, map_info *map)
 	return (1);
 }
 
-int 
+int ft_atoi(char *str)
+{
+	int	result;
 
-int	ft_read_file(int fd, map_info *map)
+	result = 0;
+	while (*str)
+	{
+		result = result * 10 + (*str);
+		str++;
+	}
+	return (result);
+}
+
+void	ft_read_first_row(int fd, t_map *map)
+{
+	int		len;
+	char	c;
+
+	len = 0;
+	while (1)
+	{
+		read(fd, &c, 1);
+		if (c == 0 || c == '\n')
+			break;
+		len++;
+	}
+	map->col = len;
+}
+
+int ft_read_line(int fd, t_map *map, int i)
+{
+	int		j;
+	char	c;
+	
+	j = 0;
+	map->grid[i] = (int *)malloc(sizeof(int) * map->row);
+	while(j < map->row)
+	{
+		read(fd, &c, 1);
+		if (c != map->empty && c != map->obstacle)
+			return (0);
+		if (c == map->empty)
+			map->grid[i][j] = 1;
+		else
+			map->grid[i][j] = 0;
+		j++;
+	}
+	if (c != '\n')
+		return (0);
+	else
+		return (1);
+}
+
+int	ft_read_file(int fd, t_map *map)
 {
 	int	i;
 
 	i = 0;
-	if (!ft_get_first_line(fd, map))
+	if (!ft_read_first_line(fd, map))
 		return (0);
 	map->grid = (int **)malloc(sizeof(int *) * map->row);
-	//첫째줄 정보에 따라 라인수만큼 읽기
-	//읽을 때마다 malloc해서 저장
+	ft_read_first_row(fd, map);
 	while (i < map->row)
 	{
-		
+		if(!ft_read_line(fd, map, i))
+			return (0);
 		i++;
 	}
 	return (1);

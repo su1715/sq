@@ -1,6 +1,6 @@
 #include "map_admin.h"
 
-void	free_memo(map_info *map, int ***memo)
+void	free_memo(t_map *map, int ***memo)
 {
 	int	i;
 

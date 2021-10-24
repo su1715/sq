@@ -1,11 +1,12 @@
 #include "map_admin.h"
 #include <stdlib.h>
 
-int	allocate_memo(map_info *map, int ***memo_sq);
-void	memoization(map_info *map, int ***memo_sq);
-int ft_min(int left, int up, int left_up);
+int	allocate_memo(t_map *map, int ***memo_sq);
+void	memoization(t_map *map, int ***memo_sq);
+void	find_square(t_map *map, int ***memo);
+void	update_by_memo(t_map *map, int ***memo);
 
-int	dynamic_programming(map_info *map)
+int	dynamic_programming(t_map *map)
 {
 	int	**memo;
 
@@ -14,11 +15,11 @@ int	dynamic_programming(map_info *map)
 	memoization(map, &memo);
 	find_square(map, &memo);
 	update_by_memo(map, &memo);
-	free_memo(&memo);
+	free_memo(map, &memo);
 	return (1);
 }
 
-void	find_square(map_info *map, int ***memo)
+void	find_square(t_map *map, int ***memo)
 {
 	int	i;
 	int	j;
@@ -45,7 +46,7 @@ void	find_square(map_info *map, int ***memo)
 	}
 }
 
-void	update_by_memo(map_info *map, int ***memo)
+void	update_by_memo(t_map *map, int ***memo)
 {
 	int	i;
 	int	j;
@@ -67,7 +68,7 @@ void	update_by_memo(map_info *map, int ***memo)
 	}
 }
 
-int	allocate_memo(map_info *map, int ***memo)
+int	allocate_memo(t_map *map, int ***memo)
 {	
 	int	i;
 	int	j;
@@ -81,9 +82,9 @@ int	allocate_memo(map_info *map, int ***memo)
 		while (j < map->col)
 		{
 			if (map->grid[i][j] == map->empty)
-				memo[i][j] = 1;
+				(*memo)[i][j] = 1;
 			else if (map->grid[i][j] == map->obstacle)
-				memo[i][j] = 0;
+				(*memo)[i][j] = 0;
 			else
 				return (0);
 			j++;
@@ -93,7 +94,7 @@ int	allocate_memo(map_info *map, int ***memo)
 	return (1);
 }
 
-void	memoization(map_info *map, int ***memo)
+void	memoization(t_map *map, int ***memo)
 {
 	int	i;
 	int	j;
