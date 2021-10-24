@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:56:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:16:12 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:44:23 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_read_first_row(int fd, t_map *map)
 		read(fd, &c, 1);
 		if (c == '\n')
 			break ;
-		if (c != map->empty && c != map->obstacle) // C가 NULL 또는 non printable 이면?
+		if (c != map->empty && c != map->obstacle)
 			return (0);
 		map->grid[0][i] = c;
 		i++;

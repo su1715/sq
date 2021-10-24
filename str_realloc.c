@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:01:40 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 16:35:10 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:44:37 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned char	*str_realloc(unsigned char *ptr, int sz, int new_sz)
 {
-    int	i;
+	int				i;
 	unsigned char	*new;
 
 	i = 0;

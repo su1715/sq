@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 22:48:50 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 14:36:28 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:52:50 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-int ft_min(int left, int up, int left_up)
+int	ft_min(int left, int up, int left_up)
 {
 	int	min;
-	
+
 	min = 2147483647;
 	if (left < min)
 		min = left;
@@ -40,7 +40,7 @@ int ft_min(int left, int up, int left_up)
 	return (min);
 }
 
-int is_overlap(char empty, char obs, char fill)
+int	is_overlap(char empty, char obs, char fill)
 {
 	if (empty == obs)
 		return (1);
@@ -50,12 +50,11 @@ int is_overlap(char empty, char obs, char fill)
 		return (1);
 	return (0);
 }
-#include <stdio.h>
-int ft_atoi(char *str)
+
+int	ft_atoi(char *str)
 {
 	int	result;
-	int i;
-
+	int	i;
 
 	i = 0;
 	result = 0;
@@ -67,7 +66,7 @@ int ft_atoi(char *str)
 	return (result);
 }
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(2, "map error\n", 10);
 }
