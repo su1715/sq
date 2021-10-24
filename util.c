@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 22:48:50 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:52:50 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:59:30 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,7 @@ int	is_overlap(char empty, char obs, char fill)
 	return (0);
 }
 
-<<<<<<< HEAD
 int	ft_atoi(char *str)
-=======
-int ft_atoi(char *str)
->>>>>>> refs/remotes/origin/master
 {
 	int	result;
 	int	i;
