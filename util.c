@@ -50,7 +50,7 @@ int is_overlap(char empty, char obs, char fill)
 		return (1);
 	return (0);
 }
-#include <stdio.h>
+
 int ft_atoi(char *str)
 {
 	int	result;
