@@ -17,7 +17,7 @@ int	ft_read_first_line(int fd, t_map *map)
 	int		i;
 
 	i = 0;
-	while (1) // 13번 인덱스까지만 확인(?)
+	while (1)
 	{
 		if (i > 13)
 			return (0);
