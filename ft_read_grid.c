@@ -43,5 +43,7 @@ int	ft_read_grid(int fd, t_map *map)
 			return (invalid_grid(map, i));
 		i++;
 	}
+	if (read(fd, &c, 1))
+		return (0);
 	return (1);
 }
