@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 13:22:34 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:51:47 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 18:58:38 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,23 @@ int	ft_read_grid(int fd, t_map *map)
 		while (cnt < map->col)
 		{
 			read(fd, &c, 1);
-			if (c != map->empty && c != map->obstacle)
-				return (0);
 			if (c == map->empty)
 				map->grid[i][cnt] = 1;
 			else if (c == map->obstacle)
 				map->grid[i][cnt] = 0;
-			else 
+			else
+			{
+				map->row = i + 1;
 				return (0);
+			}
 			cnt++;
 		}
 		read(fd, &c, 1);
 		if (c != '\n')
+		{
+			map->row = i + 1;
 			return (0);
+		}
 		i++;
 	}
 	return (1);

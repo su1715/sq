@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 20:17:55 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 14:36:29 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 18:55:03 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		if (!input(0, map))
-			ft_error();
+			ft_exit(map);
 		else
 			dynamic_programming(map);
 	}
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			if (!input(argv[i], map))
-				ft_error();
+				ft_exit(map);
 			else
 				dynamic_programming(map);
 			if (i < argc - 1)
