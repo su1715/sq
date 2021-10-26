@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:40:35 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:45:14 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 16:15:38 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_read_first_line(int fd, t_map *map)
 				return (0);
 			buf[i - 3] = '\0';
 			map->row = ft_atoi(buf);
+			if (map->row < 1)
+				return (0);
 			break ;
 		}
 		i++;
