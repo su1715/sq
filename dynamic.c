@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:10:03 by dha               #+#    #+#             */
-/*   Updated: 2021/10/26 19:00:20 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/27 02:31:58 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	update_by_memo(t_map *map);
 
 int	dynamic_programming(t_map *map)
 {
-	int	**memo;
-
 	memoization(map);
 	find_square(map);
 	update_by_memo(map);
@@ -53,7 +51,6 @@ void	find_square(t_map *map)
 {
 	int	i;
 	int	j;
-	int	max;
 	int	**grid;
 
 	i = 0;
