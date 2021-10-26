@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:56:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/26 18:59:23 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/27 00:45:23 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ int	ft_read_first_row(int fd, t_map *map)
 			return (0);
 		if (c == '\n')
 			break ;
-		if (c == map->empty)
-			map->grid[0][i] = 1;
-		else if (c == map->obstacle)
-			map->grid[0][i] = 0;
-		else
+		if (!put_each(map, 0, i, c))
 			return (0);
 		i++;
 	}

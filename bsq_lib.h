@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:00:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/26 18:54:38 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/27 00:54:41 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_read_first_line(int fd, t_map *map);
 int		ft_read_first_row(int fd, t_map *map);
 int		ft_read_grid(int fd, t_map *map);
 int		free_grid(t_map *map, int size);
+int		put_each(t_map *map, int x, int y, char c);
 void	ft_exit(t_map *map);
 void	print_map(t_map *map);
 void	free_memo(t_map *map, int ***memo);

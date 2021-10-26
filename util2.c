@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.h                                             :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 23:01:44 by dha               #+#    #+#             */
-/*   Updated: 2021/10/27 00:53:55 by dha              ###   ########.fr       */
+/*   Created: 2021/10/27 00:33:07 by dha               #+#    #+#             */
+/*   Updated: 2021/10/27 00:55:34 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#include "bsq_lib.h"
 
-int		ft_min(int left, int up, int left_up);
-int		ft_atoi(char *str);
-int		is_overlap(char empty, char obs, char fill);
-void	ft_error(void);
-char	*ft_strcpy(char *dest, char *src);
-int		*str_realloc(int *ptr, int sz, int new_sz);
-
-#endif
+int	put_each(t_map *map, int x, int y, char c)
+{
+	if (c == map->empty)
+		map->grid[x][y] = 1;
+	else if (c == map->obstacle)
+		map->grid[x][y] = 0;
+	else
+		return (0);
+	return (1);
+}
