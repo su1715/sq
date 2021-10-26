@@ -18,7 +18,7 @@ int	ft_read_first_row(int fd, t_map *map)
 	char	c;
 
 	i = 0;
-	map->grid[0] = (unsigned char *) malloc(sizeof(unsigned char) * 32);
+	map->grid[0] = (int *) malloc(sizeof(int) * 32);
 	map->col = 32;
 	while (1)
 	{
@@ -31,9 +31,12 @@ int	ft_read_first_row(int fd, t_map *map)
 			return (0);
 		if (c == '\n')
 			break ;
-		if (c != map->empty && c != map->obstacle)
+		if (c == map->empty)
+			map->grid[0][i] = 1;
+		else if (c == map->obstacle)
+			map->grid[0][i] = 0;
+		else 
 			return (0);
-		map->grid[0][i] = c;
 		i++;
 	}
 	map->grid[0] = str_realloc(map->grid[0], map->col, i);

@@ -16,7 +16,7 @@ void	print_map(t_map *map)
 {
 	int				i;
 	int				j;
-	unsigned char	**grid;
+	int	**grid;
 
 	i = 0;
 	grid = map->grid;
@@ -25,7 +25,12 @@ void	print_map(t_map *map)
 		j = 0;
 		while (j < map->col)
 		{
-			write(1, &grid[i][j], 1);
+			if (grid[i][j] == 0)
+				write(1, &map->obstacle, 1);
+			else if (grid[i][j] == 1)
+				write(1, &map->empty, 1);
+			else //2 인경우로 가정,,,, 012 아닌경우도 해야하나?
+				write(1, &map->fill, 1);
 			j++;
 		}
 		write(1, "\n", 1);

@@ -12,13 +12,13 @@
 
 #include "bsq_lib.h"
 
-unsigned char	*str_realloc(unsigned char *ptr, int sz, int new_sz)
+int	*str_realloc(int *ptr, int sz, int new_sz)
 {
-	int				i;
-	unsigned char	*new;
+	int	i;
+	int	*new;
 
 	i = 0;
-	new = (unsigned char *) malloc(sizeof(unsigned char) * new_sz);
+	new = (int *) malloc(sizeof(int) * new_sz);
 	while (i <= sz && i <= new_sz)
 	{
 		new[i] = ptr[i];
