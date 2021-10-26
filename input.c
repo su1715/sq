@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:06:13 by dha               #+#    #+#             */
-/*   Updated: 2021/10/26 20:20:59 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 21:01:34 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	input(char *filename, t_map *map)
 {
 	int		fd;
 
-	map = (t_map *) malloc(sizeof(t_map));
 	if (filename == 0)
 		fd = 0;
 	else
