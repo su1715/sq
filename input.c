@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:06:13 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:53:45 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 18:55:38 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	input(char *filename, t_map *map)
 		return (0);
 	map->grid = (int **) malloc(sizeof(int *) * map->row);
 	if (!ft_read_first_row(fd, map))
-		return (0);
+		return (free_grid(map, 1));
 	if (!ft_read_grid(fd, map))
-		return (0);
+		return (free_grid(map, map->row));
 	close(fd);
 	return (1);
 }
