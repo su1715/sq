@@ -37,5 +37,5 @@ int	ft_read_first_row(int fd, t_map *map)
 	}
 	map->grid[0] = str_realloc(map->grid[0], map->col, i);
 	map->col = i;
-	return (i);
+	return (1);
 }
