@@ -36,4 +36,6 @@ void	print_map(t_map *map)
 		write(1, "\n", 1);
 		i++;
 	}
+	free_grid(map, map->row);
+	free(map);
 }
