@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:56:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/27 00:45:23 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/27 01:57:27 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int	ft_read_first_row(int fd, t_map *map)
 	}
 	map->grid[0] = str_realloc(map->grid[0], map->col, i);
 	map->col = i;
-	return (1);
+	return (map->col);
 }
