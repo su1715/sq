@@ -19,15 +19,15 @@
 # include "util.h"
 
 typedef struct s_map {
-	unsigned char	**grid;
-	int				row;
-	int				col;
-	char			empty;
-	char			obstacle;
-	char			fill;
-	int				sq_y;
-	int				sq_x;
-	int				sq_size;
+	int		**grid;
+	int		row;
+	int		col;
+	char	empty;
+	char	obstacle;
+	char	fill;
+	int		sq_y;
+	int		sq_x;
+	int		sq_size;
 }	t_map;
 
 int		input(char *filename, t_map *map);

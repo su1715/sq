@@ -12,26 +12,44 @@
 
 #include "bsq_lib.h"
 
-int		allocate_memo(t_map *map, int ***memo_sq);
-void	memoization(t_map *map, int ***memo_sq);
-void	find_square(t_map *map, int ***memo);
-void	update_by_memo(t_map *map, int ***memo);
+void	memoization(t_map *map);
+void	find_square(t_map *map);
+void	update_by_memo(t_map *map);
 
 int	dynamic_programming(t_map *map)
 {
 	int	**memo;
 
-	if (!allocate_memo(map, &memo))
-		return (0);
-	memoization(map, &memo);
-	find_square(map, &memo);
-	update_by_memo(map, &memo);
-	free_memo(map, &memo);
+	memoization(map);
+	find_square(map);
+	update_by_memo(map);
 	print_map(map);
 	return (1);
 }
 
-void	find_square(t_map *map, int ***memo)
+void	memoization(t_map *map)
+{
+	int	i;
+	int	j;
+	int	**grid;
+
+	i = 1;
+	grid = map->grid;
+	while (i < map->row)
+	{
+		j = 1;
+		while (j < map->col)
+		{
+			if (grid[i][j])
+				grid[i][j] = ft_min(grid[i - 1][j], grid[i][j - 1], \
+					grid[i - 1][j - 1]) + 1;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	find_square(t_map *map)
 {
 	int	i;
 	int	j;
@@ -40,7 +58,7 @@ void	find_square(t_map *map, int ***memo)
 
 	i = 0;
 	map->sq_size = 0;
-	grid = *memo;
+	grid = map->grid;
 	while (i < map->row)
 	{
 		j = 0;
@@ -58,74 +76,40 @@ void	find_square(t_map *map, int ***memo)
 	}
 }
 
-void	update_by_memo(t_map *map, int ***memo_m)
+int	is_square(t_map *map, int i, int j)
 {
-	int	i;
-	int	j;
-	int	x;
 	int	y;
-	int	**memo;
+	int	x;
+	int size;
 
-	i = 0;
 	y = map->sq_y;
 	x = map->sq_x;
-	memo = *memo_m;
-	while (i < map->sq_size)
-	{
-		j = 0;
-		while (j < map->sq_size)
-		{
-			map->grid[y - i][x - j] = map->fill;
-			j++;
-		}
-		i++;
-	}
+	size = map->sq_size;
+	if (y - size < i && i <= y)
+		if (x - size < j && j <= x)
+			return (1);
+	return (0);
 }
 
-int	allocate_memo(t_map *map, int ***memo)
-{	
+void	update_by_memo(t_map *map)
+{
 	int	i;
 	int	j;
 
 	i = 0;
-	*memo = (int **)malloc(map->row * sizeof(int *));
 	while (i < map->row)
 	{
 		j = 0;
-		(*memo)[i] = (int *)malloc(map->col * sizeof(int));
 		while (j < map->col)
 		{
-			if (map->grid[i][j] == map->empty)
-				(*memo)[i][j] = 1;
-			else if (map->grid[i][j] == map->obstacle)
-				(*memo)[i][j] = 0;
-			else
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-void	memoization(t_map *map, int ***memo)
-{
-	int	i;
-	int	j;
-	int	**grid;
-
-	i = 1;
-	grid = *memo;
-	while (i < map->row)
-	{
-		j = 1;
-		while (j < map->col)
-		{
-			if (grid[i][j])
-				grid[i][j] = ft_min(grid[i - 1][j], grid[i][j - 1], \
-					grid[i - 1][j - 1]) + 1;
+			if (is_square(map, i, j))
+				map->grid[i][j] = 2; //square 인 경우 2로 표시
+			else if (map->grid[i][j] != 0){
+				map->grid[i][j] = 1;
+			}
 			j++;
 		}
 		i++;
 	}
 }
+

@@ -51,11 +51,7 @@ int	is_overlap(char empty, char obs, char fill)
 	return (0);
 }
 
-<<<<<<< HEAD
-int ft_atoi(char *str)
-=======
 int	ft_atoi(char *str)
->>>>>>> 1bd5d9020b204ea5d66f5cdd00238acf925517cf
 {
 	int	result;
 	int	i;

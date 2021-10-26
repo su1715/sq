@@ -21,14 +21,17 @@ int	ft_read_grid(int fd, t_map *map)
 	i = 1;
 	while (i < map->row)
 	{
-		map->grid[i] = malloc(sizeof(unsigned char) * map->col);
+		map->grid[i] = malloc(sizeof(int) * map->col);
 		cnt = 0;
 		while (cnt < map->col)
 		{
 			read(fd, &c, 1);
-			if (c != map->empty && c != map->obstacle)
+			if (c == map->empty)
+				map->grid[i][cnt] = 1;
+			else if (c == map->obstacle)
+				map->grid[i][cnt] = 0;
+			else 
 				return (0);
-			map->grid[i][cnt] = c;
 			cnt++;
 		}
 		read(fd, &c, 1);
