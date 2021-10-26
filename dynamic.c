@@ -103,7 +103,7 @@ void	update_by_memo(t_map *map)
 		while (j < map->col)
 		{
 			if (is_square(map, i, j))
-				map->grid[i][j] = 2; //square 인 경우 2로 표시
+				map->grid[i][j] = 2;
 			else if (map->grid[i][j] != 0)
 			{
 				map->grid[i][j] = 1;
