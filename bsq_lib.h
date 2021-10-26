@@ -39,6 +39,5 @@ int		free_grid(t_map *map, int size);
 int		put_each(t_map *map, int x, int y, char c);
 void	ft_exit(t_map *map);
 void	print_map(t_map *map);
-void	free_memo(t_map *map, int ***memo);
 
 #endif
