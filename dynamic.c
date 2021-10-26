@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:10:03 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:24:16 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 19:00:20 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	is_square(t_map *map, int i, int j)
 {
 	int	y;
 	int	x;
-	int size;
+	int	size;
 
 	y = map->sq_y;
 	x = map->sq_x;
@@ -103,8 +103,9 @@ void	update_by_memo(t_map *map)
 		while (j < map->col)
 		{
 			if (is_square(map, i, j))
-				map->grid[i][j] = 2; //square 인 경우 2로 표시
-			else if (map->grid[i][j] != 0){
+				map->grid[i][j] = 2;
+			else if (map->grid[i][j] != 0)
+			{
 				map->grid[i][j] = 1;
 			}
 			j++;
@@ -112,4 +113,3 @@ void	update_by_memo(t_map *map)
 		i++;
 	}
 }
-
