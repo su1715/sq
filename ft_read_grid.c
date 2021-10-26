@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 13:22:34 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 19:13:16 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:51:47 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_read_grid(int fd, t_map *map)
 	i = 1;
 	while (i < map->row)
 	{
-		map->grid[i] = (unsigned char *) malloc(sizeof(unsigned char) * map->col);
+		map->grid[i] = malloc(sizeof(unsigned char) * map->col);
 		cnt = 0;
 		while (cnt < map->col)
 		{

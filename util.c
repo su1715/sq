@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 22:48:50 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 14:36:28 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/26 16:15:15 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-int ft_min(int left, int up, int left_up)
+int	ft_min(int left, int up, int left_up)
 {
 	int	min;
-	
+
 	min = 2147483647;
 	if (left < min)
 		min = left;
@@ -40,7 +40,7 @@ int ft_min(int left, int up, int left_up)
 	return (min);
 }
 
-int is_overlap(char empty, char obs, char fill)
+int	is_overlap(char empty, char obs, char fill)
 {
 	if (empty == obs)
 		return (1);
@@ -51,23 +51,28 @@ int is_overlap(char empty, char obs, char fill)
 	return (0);
 }
 
+<<<<<<< HEAD
 int ft_atoi(char *str)
+=======
+int	ft_atoi(char *str)
+>>>>>>> 1bd5d9020b204ea5d66f5cdd00238acf925517cf
 {
 	int	result;
-	int i;
-
+	int	i;
 
 	i = 0;
 	result = 0;
 	while (str[i] != '\0')
 	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
 	return (result);
 }
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(2, "map error\n", 10);
 }

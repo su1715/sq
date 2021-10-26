@@ -6,13 +6,13 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:10:03 by dha               #+#    #+#             */
-/*   Updated: 2021/10/24 14:25:36 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/24 19:24:16 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq_lib.h"
 
-int     allocate_memo(t_map *map, int ***memo_sq);
+int		allocate_memo(t_map *map, int ***memo_sq);
 void	memoization(t_map *map, int ***memo_sq);
 void	find_square(t_map *map, int ***memo);
 void	update_by_memo(t_map *map, int ***memo);
@@ -36,7 +36,7 @@ void	find_square(t_map *map, int ***memo)
 	int	i;
 	int	j;
 	int	max;
-	int **grid;
+	int	**grid;
 
 	i = 0;
 	map->sq_size = 0;
@@ -62,13 +62,14 @@ void	update_by_memo(t_map *map, int ***memo_m)
 {
 	int	i;
 	int	j;
-	int x;
-	int y;
-	int **memo = *memo_m;
+	int	x;
+	int	y;
+	int	**memo;
 
 	i = 0;
 	y = map->sq_y;
 	x = map->sq_x;
+	memo = *memo_m;
 	while (i < map->sq_size)
 	{
 		j = 0;
