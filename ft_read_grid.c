@@ -37,11 +37,11 @@ int	ft_read_grid(int fd, t_map *map)
 				return (invalid_grid(map, i));
 			cnt++;
 		}
-		if (read(fd, &c, 1) < 1)
-			return (invalid_grid(map, i));
-		if (c != '\n')
+		if (read(fd, &c, 1) < 1 || c != '\n')
 			return (invalid_grid(map, i));
 		i++;
 	}
+	if (read(fd, &c, 1))
+		return (0);
 	return (1);
 }
