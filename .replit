@@ -1,2 +1,0 @@
-language = "c"
-run = "gcc *.c *.h; ./a.out test/ex1.txt test/ex2.txt test/ex3.txt test/ex4.txt"
