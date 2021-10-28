@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 OBJS = ${SRCS:.c=.o}
 NAME = BSQ
 
-all : $(NAME)
+all : ${NAME}
 
-$(NAME) : ${SRCS} ${OBJS}
+${NAME} : ${SRCS} ${OBJS}
 	${CC} ${CFLAGS} -o $@ ${OBJS}
 
 %.o : %.c
@@ -20,4 +20,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : clean fclean re ${NAME} all
+.PHONY : clean fclean re all
