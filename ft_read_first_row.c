@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 10:56:38 by dha               #+#    #+#             */
-/*   Updated: 2021/10/27 01:57:27 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/28 10:34:06 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_read_first_row(int fd, t_map *map)
 	{
 		if (i == map->col)
 		{
-			map->grid[0] = str_realloc(map->grid[0], map->col, map->col * 2);
+			map->grid[0] = int_realloc(map->grid[0], map->col, map->col * 2);
 			map->col *= 2;
 		}
 		if (read(fd, &c, 1) < 1)
@@ -35,7 +35,7 @@ int	ft_read_first_row(int fd, t_map *map)
 			return (0);
 		i++;
 	}
-	map->grid[0] = str_realloc(map->grid[0], map->col, i);
+	map->grid[0] = int_realloc(map->grid[0], map->col, i);
 	map->col = i;
 	return (map->col);
 }

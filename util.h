@@ -6,7 +6,7 @@
 /*   By: dha <dha@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:01:44 by dha               #+#    #+#             */
-/*   Updated: 2021/10/27 00:53:55 by dha              ###   ########.fr       */
+/*   Updated: 2021/10/28 10:35:29 by dha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int		ft_atoi(char *str);
 int		is_overlap(char empty, char obs, char fill);
 void	ft_error(void);
 char	*ft_strcpy(char *dest, char *src);
-int		*str_realloc(int *ptr, int sz, int new_sz);
+int		*int_realloc(int *ptr, int sz, int new_sz);
 
 #endif
